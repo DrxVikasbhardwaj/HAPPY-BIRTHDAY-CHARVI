@@ -22,7 +22,7 @@
       font-family: Georgia, "Times New Roman", serif;
     }
 
-    /* Stars */
+    /* STARS */
     .stars {
       position: fixed;
       inset: 0;
@@ -51,10 +51,17 @@
     .star:nth-child(8) { top: 90%; left: 35%; animation-delay: 1s; }
 
     @keyframes twinkle {
-      0%, 100% { opacity: .25; transform: scale(.7); }
-      50% { opacity: 1; transform: scale(1.4); }
+      0%, 100% {
+        opacity: .25;
+        transform: scale(.7);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
     }
 
+    /* MAIN CONTAINER */
     .container {
       position: relative;
       z-index: 2;
@@ -71,7 +78,7 @@
       text-align: center;
     }
 
-    /* Small top text */
+    /* TOP TEXT */
     .small-text {
       color: #ffd6e2;
       font-size: 14px;
@@ -81,7 +88,7 @@
       opacity: .85;
     }
 
-    /* Heart */
+    /* HEART */
     .heart {
       font-size: 65px;
       display: inline-block;
@@ -97,6 +104,7 @@
       45% { transform: scale(1.1); }
     }
 
+    /* TITLE */
     h1 {
       font-size: clamp(42px, 10vw, 72px);
       font-weight: normal;
@@ -122,7 +130,7 @@
       margin-bottom: 35px;
     }
 
-    /* Main card */
+    /* MAIN CARD */
     .card {
       position: relative;
       padding: 32px 25px;
@@ -161,7 +169,13 @@
       line-height: 1.8;
     }
 
-    /* Surprise box */
+    .little-wish {
+      color: #ffd6a5 !important;
+      font-size: 15px !important;
+      margin-bottom: 12px;
+    }
+
+    /* SURPRISE BOX */
     .surprise {
       margin-top: 25px;
       padding: 25px 20px;
@@ -199,8 +213,152 @@
       color: #f4a6b8;
       font-size: 20px;
       letter-spacing: 1px;
+      font-weight: bold;
     }
 
+    /* UNLOCK MESSAGE */
+    .unlock-message {
+      display: none;
+      margin-top: 20px;
+      padding: 22px 18px;
+      border-radius: 22px;
+
+      background: rgba(244,166,184,.10);
+      border: 1px solid rgba(255,214,165,.35);
+
+      animation: unlockReveal 1.8s ease;
+    }
+
+    .unlock-icon {
+      font-size: 45px;
+      margin-bottom: 10px;
+      animation: unlockPulse 1.5s infinite;
+    }
+
+    .unlock-message h3 {
+      color: #ffd6a5;
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .unlock-message p {
+      color: #eee8ed;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    @keyframes unlockReveal {
+      0% {
+        opacity: 0;
+        transform: scale(.85) translateY(25px);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.04) translateY(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes unlockPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    /* MEMORY STORY */
+    .memory-section {
+      display: none;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 650px;
+      margin: 35px auto 0;
+      padding: 0 20px 50px;
+      animation: memoryReveal 1.5s ease;
+    }
+
+    @keyframes memoryReveal {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .memory-title {
+      color: #ffd6a5;
+      font-size: 28px;
+      font-weight: normal;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .memory-subtitle {
+      color: #c9c4cf;
+      font-size: 15px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .memory-card {
+      margin-bottom: 35px;
+      padding: 15px;
+      border-radius: 22px;
+
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(244,166,184,.3);
+
+      box-shadow: 0 15px 45px rgba(0,0,0,.3);
+
+      animation: cardFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .memory-card img,
+    .memory-card video {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      max-height: 550px;
+      object-fit: cover;
+    }
+
+    .memory-caption {
+      color: #fff7fb;
+      font-size: 18px;
+      margin-top: 16px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .memory-video {
+      margin-top: 35px;
+    }
+
+    /* FOOTER */
     .footer {
       margin-top: 30px;
       color: #8f8b9a;
@@ -208,7 +366,9 @@
       letter-spacing: 1px;
     }
 
+    /* MOBILE */
     @media (max-width: 500px) {
+
       .container {
         padding: 30px 16px;
       }
@@ -224,81 +384,18 @@
       .subtitle {
         font-size: 17px;
       }
+
+      .memory-section {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
-    /* MEMORY STORY */
-.memory-section {
-  display: none;
-  margin-top: 35px;
-  animation: memoryReveal 1.5s ease;
-}
-
-@keyframes memoryReveal {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.memory-title {
-  color: #ffd6a5;
-  font-size: 28px;
-  font-weight: normal;
-  margin-bottom: 10px;
-}
-
-.memory-subtitle {
-  color: #c9c4cf;
-  font-size: 15px;
-  margin-bottom: 28px;
-}
-
-.memory-card {
-  margin-bottom: 35px;
-  padding: 15px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(244,166,184,.3);
-  box-shadow: 0 15px 45px rgba(0,0,0,.3);
-  animation: cardFloat 5s ease-in-out infinite;
-}
-
-@keyframes cardFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.memory-card img,
-.memory-card video {
-  width: 100%;
-  display: block;
-  border-radius: 16px;
-  max-height: 550px;
-  object-fit: cover;
-}
-
-.memory-caption {
-  color: #fff7fb;
-  font-size: 18px;
-  margin-top: 16px;
-  line-height: 1.6;
-}
-
-.memory-caption span {
-  color: #f4a6b8;
-}
-
-.memory-video {
-  margin-top: 35px;
-}
   </style>
 </head>
 
 <body>
 
+  <!-- STARS -->
   <div class="stars">
     <div class="star"></div>
     <div class="star"></div>
@@ -310,6 +407,7 @@
     <div class="star"></div>
   </div>
 
+  <!-- MAIN PAGE -->
   <div class="container">
 
     <div class="content">
@@ -331,8 +429,13 @@
 
       <div class="card">
 
-        <p class="little-wish">For you, Charvi ♡</p>
-        <h2>To Someone Special ♡</h2>
+        <p class="little-wish">
+          For you, Charvi ♡
+        </p>
+
+        <h2>
+          To Someone Special ♡
+        </h2>
 
         <p>
           I wanted to make something a little different
@@ -342,19 +445,42 @@
 
       </div>
 
+      <!-- SURPRISE -->
       <div class="surprise">
 
-        <div class="lock">🔒</div>
+        <div class="lock" id="lockIcon">
+          🔒
+        </div>
 
-        <h3>There's something more waiting...</h3>
+        <h3>
+          There's something more waiting...
+        </h3>
 
-        <p>
+        <p id="surpriseText">
           Come back at exactly <b>8:47 AM</b>.
           A little surprise will be waiting for you here. ✨
         </p>
 
         <div id="countdown">
           Calculating...
+        </div>
+
+        <!-- UNLOCK MESSAGE -->
+        <div class="unlock-message" id="unlockMessage">
+
+          <div class="unlock-icon">
+            ✨🔓✨
+          </div>
+
+          <h3>
+            Your little surprise is here ❤️
+          </h3>
+
+          <p>
+            Some memories are worth keeping forever...
+            and these are ours. ✨
+          </p>
+
         </div>
 
       </div>
@@ -366,118 +492,254 @@
     </div>
 
   </div>
-<div class="memory-section" id="memorySection">
 
-  <h2 class="memory-title">Our Little Story ✨</h2>
-  <p class="memory-subtitle">A few moments worth remembering ❤️</p>
+  <!-- MEMORY STORY -->
+  <div class="memory-section" id="memorySection">
 
-  <div class="memory-card">
-    <img src="photo%2000.jpeg" alt="Our first memory">
-    <div class="memory-caption">Where it all started ✨</div>
+    <h2 class="memory-title">
+      Our Little Story ✨
+    </h2>
+
+    <p class="memory-subtitle">
+      A few moments worth remembering ❤️
+    </p>
+
+    <div class="memory-card">
+
+      <img src="photo%2000.jpeg" alt="Our first memory">
+
+      <div class="memory-caption">
+        Where it all started ✨
+      </div>
+
+    </div>
+
+    <div class="memory-card">
+
+      <img src="photo02.jpeg" alt="Memory">
+
+      <div class="memory-caption">
+        And then the memories began ❤️
+      </div>
+
+    </div>
+
+    <div class="memory-card">
+
+      <img src="photo%2003.jpeg" alt="Memory">
+
+      <div class="memory-caption">
+        Little moments, big memories ✨
+      </div>
+
+    </div>
+
+    <div class="memory-card">
+
+      <img src="photo04.jpeg" alt="Memory">
+
+      <div class="memory-caption">
+        Another beautiful memory ❤️
+      </div>
+
+    </div>
+
+    <div class="memory-card">
+
+      <img src="photo05.jpeg" alt="Memory">
+
+      <div class="memory-caption">
+        More moments to remember ✨
+      </div>
+
+    </div>
+
+    <div class="memory-card">
+
+      <img src="photo%205.jpeg" alt="Memory">
+
+      <div class="memory-caption">
+        And this story keeps going ❤️
+      </div>
+
+    </div>
+
+    <!-- VIDEOS -->
+
+    <div class="memory-card memory-video">
+
+      <video controls playsinline>
+
+        <source
+          src="video%2000.mp4"
+          type="video/mp4">
+
+      </video>
+
+      <div class="memory-caption">
+        A memory in motion 🎬✨
+      </div>
+
+    </div>
+
+    <div class="memory-card memory-video">
+
+      <video controls playsinline>
+
+        <source
+          src="video01.mp4"
+          type="video/mp4">
+
+      </video>
+
+      <div class="memory-caption">
+        One more moment ❤️
+      </div>
+
+    </div>
+
+    <div class="memory-card memory-video">
+
+      <video controls playsinline>
+
+        <source
+          src="video02.mp4"
+          type="video/mp4">
+
+      </video>
+
+      <div class="memory-caption">
+        Memories that deserve to stay ✨
+      </div>
+
+    </div>
+
+    <div class="memory-card memory-video">
+
+      <video controls playsinline>
+
+        <source
+          src="video%203.mp4"
+          type="video/mp4">
+
+      </video>
+
+      <div class="memory-caption">
+        Just a little more of our story ❤️
+      </div>
+
+    </div>
+
+    <div class="memory-card memory-video">
+
+      <video controls playsinline>
+
+        <source
+          src="video04.mp4"
+          type="video/mp4">
+
+      </video>
+
+      <div class="memory-caption">
+        And the memories continue... ✨
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="memory-card">
-    <img src="photo02.jpeg" alt="Memory">
-    <div class="memory-caption">And then the memories began ❤️</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo%2003.jpeg" alt="Memory">
-    <div class="memory-caption">Little moments, big memories ✨</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo04.jpeg" alt="Memory">
-    <div class="memory-caption">Another beautiful memory ❤️</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo05.jpeg" alt="Memory">
-    <div class="memory-caption">More moments to remember ✨</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo%205.jpeg" alt="Memory">
-    <div class="memory-caption">And this story keeps going ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video%2000.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">A memory in motion 🎬✨</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video01.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">One more moment ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video02.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">Memories that deserve to stay ✨</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video%203.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">Just a little more of our story ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video04.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">And the memories continue... ✨</div>
-  </div>
-
-</div>  
-
-
+  <!-- COUNTDOWN SCRIPT -->
   <script>
-const unlock = new Date(2026, 8, 20, 8, 47, 0);
 
-function updateCountdown() {
-  const now = new Date();
-  const countdown = document.getElementById("countdown");
-  const memorySection = document.getElementById("memorySection");
+    const unlock =
+      new Date(2026, 8, 20, 8, 47, 0);
 
-  if (now >= unlock) {
-    countdown.innerHTML = "✨ It's time! Your surprise is unlocked ❤️";
-    memorySection.style.display = "block";
-    return;
-  }
+    function updateCountdown() {
 
-  const difference = unlock - now;
+      const now = new Date();
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor(
-    (difference % (1000 * 60 * 60)) / (1000 * 60)
-  );
-  const seconds = Math.floor(
-    (difference % (1000 * 60)) / 1000
-  );
+      const countdown =
+        document.getElementById("countdown");
 
-  countdown.innerHTML =
-    days + "d " +
-    hours + "h " +
-    minutes + "m " +
-    seconds + "s";
+      const memorySection =
+        document.getElementById("memorySection");
 
-  memorySection.style.display = "none";
-}
+      const unlockMessage =
+        document.getElementById("unlockMessage");
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
+      const lockIcon =
+        document.getElementById("lockIcon");
+
+      const surpriseText =
+        document.getElementById("surpriseText");
+
+      if (now >= unlock) {
+
+        countdown.innerHTML =
+          "✨ It's time! Your surprise is unlocked ❤️";
+
+        memorySection.style.display = "block";
+
+        unlockMessage.style.display = "block";
+
+        lockIcon.innerHTML = "✨🔓✨";
+
+        surpriseText.innerHTML =
+          "The wait is over. Your memories are here. ❤️";
+
+        return;
+      }
+
+      const difference =
+        unlock - now;
+
+      const days =
+        Math.floor(
+          difference /
+          (1000 * 60 * 60 * 24)
+        );
+
+      const hours =
+        Math.floor(
+          (difference %
+            (1000 * 60 * 60 * 24)) /
+          (1000 * 60 * 60)
+        );
+
+      const minutes =
+        Math.floor(
+          (difference %
+            (1000 * 60 * 60)) /
+          (1000 * 60)
+        );
+
+      const seconds =
+        Math.floor(
+          (difference %
+            (1000 * 60)) /
+          1000
+        );
+
+      countdown.innerHTML =
+        days + "d " +
+        hours + "h " +
+        minutes + "m " +
+        seconds + "s";
+
+      memorySection.style.display = "none";
+
+      unlockMessage.style.display = "none";
+
+    }
+
+    updateCountdown();
+
+    setInterval(
+      updateCountdown,
+      1000
+    );
+
+  </script>
 
 </body>
 </html>
