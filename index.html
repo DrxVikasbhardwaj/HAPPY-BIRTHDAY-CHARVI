@@ -301,51 +301,53 @@
 
   <script>
 
-    function updateCountdown() {
+  function updateCountdown() {
 
-      const now = new Date();
+    const now = new Date();
 
-      const unlock = new Date();
+    // Unlock: 20 September 2026 at 8:47 AM
+    const unlock = new Date(2026, 8, 20, 8, 47, 0);
 
-      unlock.setHours(8, 47, 0, 0);
-
-      /*
-        If today's 8:47 AM has already passed,
-        the countdown will show the next day's time.
-      */
-
-      if (now >= unlock) {
-        unlock.setDate(unlock.getDate() + 1);
-      }
-
-      const difference = unlock - now;
-
-      const hours = Math.floor(
-        difference / (1000 * 60 * 60)
-      );
-
-      const minutes = Math.floor(
-        (difference % (1000 * 60 * 60))
-        / (1000 * 60)
-      );
-
-      const seconds = Math.floor(
-        (difference % (1000 * 60))
-        / 1000
-      );
-
+    if (now >= unlock) {
       document.getElementById("countdown").innerHTML =
-        hours + "h  " +
-        minutes + "m  " +
-        seconds + "s";
-
+        "✨ It's time! Your surprise is unlocked ❤️";
+      return;
     }
 
-    updateCountdown();
+    const difference = unlock - now;
 
-    setInterval(updateCountdown, 1000);
+    const days = Math.floor(
+      difference / (1000 * 60 * 60 * 24)
+    );
 
-  </script>
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24))
+      / (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+      (difference % (1000 * 60 * 60))
+      / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+      (difference % (1000 * 60))
+      / 1000
+    );
+
+    document.getElementById("countdown").innerHTML =
+      days + "d  " +
+      hours + "h  " +
+      minutes + "m  " +
+      seconds + "s";
+
+  }
+
+  updateCountdown();
+
+  setInterval(updateCountdown, 1000);
+
+</script>
 
 </body>
 </html>
