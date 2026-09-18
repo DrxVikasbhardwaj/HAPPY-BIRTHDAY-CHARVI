@@ -225,6 +225,75 @@
         font-size: 17px;
       }
     }
+    /* MEMORY STORY */
+.memory-section {
+  display: none;
+  margin-top: 35px;
+  animation: memoryReveal 1.5s ease;
+}
+
+@keyframes memoryReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memory-title {
+  color: #ffd6a5;
+  font-size: 28px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.memory-subtitle {
+  color: #c9c4cf;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+.memory-card {
+  margin-bottom: 35px;
+  padding: 15px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(244,166,184,.3);
+  box-shadow: 0 15px 45px rgba(0,0,0,.3);
+  animation: cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.memory-card img,
+.memory-card video {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+  max-height: 550px;
+  object-fit: cover;
+}
+
+.memory-caption {
+  color: #fff7fb;
+  font-size: 18px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.memory-caption span {
+  color: #f4a6b8;
+}
+
+.memory-video {
+  margin-top: 35px;
+}
   </style>
 </head>
 
@@ -297,7 +366,80 @@
     </div>
 
   </div>
+<div class="memory-section" id="memorySection">
 
+  <h2 class="memory-title">Our Little Story ✨</h2>
+  <p class="memory-subtitle">A few moments worth remembering ❤️</p>
+
+  <div class="memory-card">
+    <img src="photo%2000.jpeg" alt="Our first memory">
+    <div class="memory-caption">Where it all started ✨</div>
+  </div>
+
+  <div class="memory-card">
+    <img src="photo02.jpeg" alt="Memory">
+    <div class="memory-caption">And then the memories began ❤️</div>
+  </div>
+
+  <div class="memory-card">
+    <img src="photo%2003.jpeg" alt="Memory">
+    <div class="memory-caption">Little moments, big memories ✨</div>
+  </div>
+
+  <div class="memory-card">
+    <img src="photo04.jpeg" alt="Memory">
+    <div class="memory-caption">Another beautiful memory ❤️</div>
+  </div>
+
+  <div class="memory-card">
+    <img src="photo05.jpeg" alt="Memory">
+    <div class="memory-caption">More moments to remember ✨</div>
+  </div>
+
+  <div class="memory-card">
+    <img src="photo%205.jpeg" alt="Memory">
+    <div class="memory-caption">And this story keeps going ❤️</div>
+  </div>
+
+  <div class="memory-card memory-video">
+    <video controls playsinline>
+      <source src="video%2000.mp4" type="video/mp4">
+    </video>
+    <div class="memory-caption">A memory in motion 🎬✨</div>
+  </div>
+
+  <div class="memory-card memory-video">
+    <video controls playsinline>
+      <source src="video01.mp4" type="video/mp4">
+    </video>
+    <div class="memory-caption">One more moment ❤️</div>
+  </div>
+
+  <div class="memory-card memory-video">
+    <video controls playsinline>
+      <source src="video02.mp4" type="video/mp4">
+    </video>
+    <div class="memory-caption">Memories that deserve to stay ✨</div>
+  </div>
+
+  <div class="memory-card memory-video">
+    <video controls playsinline>
+      <source src="video%203.mp4" type="video/mp4">
+    </video>
+    <div class="memory-caption">Just a little more of our story ❤️</div>
+  </div>
+
+  <div class="memory-card memory-video">
+    <video controls playsinline>
+      <source src="video04.mp4" type="video/mp4">
+    </video>
+    <div class="memory-caption">And the memories continue... ✨</div>
+  </div>
+
+</div>  
+
+
+  <script>
 
   <script>
 
@@ -305,12 +447,19 @@
 
     const now = new Date();
 
-    // Unlock: 20 September 2026 at 8:47 AM
+    // Surprise unlock: 20 September 2026 at 8:47 AM
     const unlock = new Date(2026, 8, 20, 8, 47, 0);
 
+    const memorySection = document.getElementById("memorySection");
+    const countdown = document.getElementById("countdown");
+
     if (now >= unlock) {
-      document.getElementById("countdown").innerHTML =
+
+      countdown.innerHTML =
         "✨ It's time! Your surprise is unlocked ❤️";
+
+      memorySection.style.display = "block";
+
       return;
     }
 
@@ -335,12 +484,13 @@
       / 1000
     );
 
-    document.getElementById("countdown").innerHTML =
+    countdown.innerHTML =
       days + "d  " +
       hours + "h  " +
       minutes + "m  " +
       seconds + "s";
 
+    memorySection.style.display = "none";
   }
 
   updateCountdown();
