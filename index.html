@@ -55,6 +55,7 @@
         opacity: .25;
         transform: scale(.7);
       }
+
       50% {
         opacity: 1;
         transform: scale(1.4);
@@ -216,6 +217,47 @@
       font-weight: bold;
     }
 
+    /* UNLOCK BUTTON */
+    #unlockButton {
+      display: none;
+      margin: 22px auto 0;
+      padding: 14px 28px;
+
+      border: 1px solid rgba(255,214,165,.5);
+      border-radius: 50px;
+
+      background: linear-gradient(
+        135deg,
+        rgba(244,166,184,.25),
+        rgba(255,214,165,.18)
+      );
+
+      color: #fff7fb;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.25),
+        0 0 20px rgba(244,166,184,.12);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    #unlockButton:hover {
+      transform: translateY(-3px) scale(1.03);
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.3),
+        0 0 25px rgba(244,166,184,.25);
+    }
+
+    #unlockButton:active {
+      transform: scale(.97);
+    }
+
     /* UNLOCK MESSAGE */
     .unlock-message {
       display: none;
@@ -281,9 +323,10 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 650px;
+      max-width: 700px;
       margin: 35px auto 0;
       padding: 0 20px 50px;
+
       animation: memoryReveal 1.5s ease;
     }
 
@@ -337,13 +380,31 @@
       }
     }
 
-    .memory-card img,
+    /* PHOTOS - FULL IMAGE, NO CROP */
+    .memory-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      border-radius: 16px;
+
+      object-fit: contain;
+    }
+
+    /* VIDEOS - FULL FRAME, NO CROP */
     .memory-card video {
       width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 75vh;
+
       display: block;
+      margin: 0 auto;
+
       border-radius: 16px;
-      max-height: 550px;
-      object-fit: cover;
+
+      object-fit: contain;
+      background: #050711;
     }
 
     .memory-caption {
@@ -356,6 +417,16 @@
 
     .memory-video {
       margin-top: 35px;
+    }
+
+    /* VIDEO ERROR MESSAGE */
+    .video-error {
+      display: none;
+      color: #f4a6b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+      text-align: center;
     }
 
     /* FOOTER */
@@ -388,6 +459,14 @@
       .memory-section {
         padding-left: 16px;
         padding-right: 16px;
+      }
+
+      .memory-card {
+        padding: 10px;
+      }
+
+      .memory-card video {
+        max-height: 70vh;
       }
     }
   </style>
@@ -465,6 +544,11 @@
           Calculating...
         </div>
 
+        <!-- UNLOCK BUTTON -->
+        <button id="unlockButton">
+          🔓 Unlock Your Surprise ❤️
+        </button>
+
         <!-- UNLOCK MESSAGE -->
         <div class="unlock-message" id="unlockMessage">
 
@@ -494,82 +578,258 @@
   </div>
 
   <!-- MEMORY STORY -->
-<div class="memory-section" id="memorySection">
+  <div class="memory-section" id="memorySection">
 
-  <h2 class="memory-title">Our Little Story ✨</h2>
-  <p class="memory-subtitle">A few moments worth remembering ❤️</p>
+    <h2 class="memory-title">
+      Our Little Story ✨
+    </h2>
 
-  <div class="memory-card">
-    <img src="photo%2000.jpeg" alt="Our first memory">
-    <div class="memory-caption">Where it all started ✨</div>
+    <p class="memory-subtitle">
+      A few moments worth remembering ❤️
+    </p>
+
+    <!-- 1. PHOTO 00 -->
+    <div class="memory-card">
+
+      <img
+        src="photo%2000.jpeg"
+        alt="Our first memory"
+      >
+
+      <div class="memory-caption">
+        Where it all started ✨
+      </div>
+
+    </div>
+
+    <!-- 2. VIDEO 00 -->
+    <div class="memory-card memory-video">
+
+      <video
+        controls
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="video%2000.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support video playback.
+
+      </video>
+
+      <div class="video-error">
+        This video could not be loaded.
+      </div>
+
+      <div class="memory-caption">
+        A memory in motion 🎬✨
+      </div>
+
+    </div>
+
+    <!-- 3. PHOTO 02 -->
+    <div class="memory-card">
+
+      <img
+        src="photo02.jpeg"
+        alt="Memory"
+      >
+
+      <div class="memory-caption">
+        And then the memories began ❤️
+      </div>
+
+    </div>
+
+    <!-- 4. PHOTO 03 -->
+    <div class="memory-card">
+
+      <img
+        src="photo%2003.jpeg"
+        alt="Memory"
+      >
+
+      <div class="memory-caption">
+        Little moments, big memories ✨
+      </div>
+
+    </div>
+
+    <!-- 5. VIDEO 01 -->
+    <div class="memory-card memory-video">
+
+      <video
+        controls
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="video01.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support video playback.
+
+      </video>
+
+      <div class="video-error">
+        This video could not be loaded.
+      </div>
+
+      <div class="memory-caption">
+        One more moment ❤️
+      </div>
+
+    </div>
+
+    <!-- 6. VIDEO 02 -->
+    <div class="memory-card memory-video">
+
+      <video
+        controls
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="video02.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support video playback.
+
+      </video>
+
+      <div class="video-error">
+        This video could not be loaded.
+      </div>
+
+      <div class="memory-caption">
+        Memories that deserve to stay ✨
+      </div>
+
+    </div>
+
+    <!-- 7. VIDEO 3 -->
+    <div class="memory-card memory-video">
+
+      <video
+        controls
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="video%203.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support video playback.
+
+      </video>
+
+      <div class="video-error">
+        This video could not be loaded.
+      </div>
+
+      <div class="memory-caption">
+        Just a little more of our story ❤️
+      </div>
+
+    </div>
+
+    <!-- 8. VIDEO 04 -->
+    <div class="memory-card memory-video">
+
+      <video
+        controls
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="video04.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support video playback.
+
+      </video>
+
+      <div class="video-error">
+        This video could not be loaded.
+      </div>
+
+      <div class="memory-caption">
+        And the memories continue... ✨
+      </div>
+
+    </div>
+
+    <!-- 9. PHOTO 04 -->
+    <div class="memory-card">
+
+      <img
+        src="photo04.jpeg"
+        alt="Memory"
+      >
+
+      <div class="memory-caption">
+        Another beautiful memory ❤️
+      </div>
+
+    </div>
+
+    <!-- 10. PHOTO 05 -->
+    <div class="memory-card">
+
+      <img
+        src="photo05.jpeg"
+        alt="Memory"
+      >
+
+      <div class="memory-caption">
+        More moments to remember ✨
+      </div>
+
+    </div>
+
+    <!-- 11. PHOTO 5 -->
+    <div class="memory-card">
+
+      <img
+        src="photo%205.jpeg"
+        alt="Memory"
+      >
+
+      <div class="memory-caption">
+        And this story keeps going ❤️
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="memory-card">
-    <img src="photo02.jpeg" alt="Memory">
-    <div class="memory-caption">And then the memories began ❤️</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo%2003.jpeg" alt="Memory">
-    <div class="memory-caption">Little moments, big memories ✨</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo04.jpeg" alt="Memory">
-    <div class="memory-caption">Another beautiful memory ❤️</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo05.jpeg" alt="Memory">
-    <div class="memory-caption">More moments to remember ✨</div>
-  </div>
-
-  <div class="memory-card">
-    <img src="photo%205.jpeg" alt="Memory">
-    <div class="memory-caption">And this story keeps going ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video%2000.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">A memory in motion 🎬✨</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video01.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">One more moment ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video02.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">Memories that deserve to stay ✨</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video%203.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">Just a little more of our story ❤️</div>
-  </div>
-
-  <div class="memory-card memory-video">
-    <video controls playsinline>
-      <source src="video04.mp4" type="video/mp4">
-    </video>
-    <div class="memory-caption">And the memories continue... ✨</div>
-  </div>
-
-</div>
   <!-- COUNTDOWN SCRIPT -->
   <script>
 
+    /*
+      20 September 2026
+      8:47 AM IST
+
+      IST = UTC + 5:30
+      Therefore:
+      8:47 AM IST = 03:17 AM UTC
+    */
+
     const unlock =
-      new Date(Date.now()+30000);
+      new Date("2026-09-20T03:17:00Z");
+
+    let surpriseUnlocked = false;
 
     function updateCountdown() {
 
@@ -584,77 +844,157 @@
       const unlockMessage =
         document.getElementById("unlockMessage");
 
+      const unlockButton =
+        document.getElementById("unlockButton");
+
       const lockIcon =
         document.getElementById("lockIcon");
 
       const surpriseText =
         document.getElementById("surpriseText");
 
-      if (now >= unlock) {
+      /*
+        Before 8:47 AM:
+        Keep everything locked.
+      */
+
+      if (now < unlock) {
+
+        const difference =
+          unlock - now;
+
+        const days =
+          Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+          );
+
+        const hours =
+          Math.floor(
+            (difference %
+              (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+          );
+
+        const minutes =
+          Math.floor(
+            (difference %
+              (1000 * 60 * 60)) /
+            (1000 * 60)
+          );
+
+        const seconds =
+          Math.floor(
+            (difference %
+              (1000 * 60)) /
+            1000
+          );
 
         countdown.innerHTML =
-          "✨ It's time! Your surprise is unlocked ❤️";
+          days + "d " +
+          hours + "h " +
+          minutes + "m " +
+          seconds + "s";
 
-        memorySection.style.display = "block";
+        memorySection.style.display = "none";
 
-        unlockMessage.style.display = "block";
+        unlockMessage.style.display = "none";
 
-        lockIcon.innerHTML = "✨🔓✨";
-
-        surpriseText.innerHTML =
-          "The wait is over. Your memories are here. ❤️";
+        unlockButton.style.display = "none";
 
         return;
       }
 
-      const difference =
-        unlock - now;
-
-      const days =
-        Math.floor(
-          difference /
-          (1000 * 60 * 60 * 24)
-        );
-
-      const hours =
-        Math.floor(
-          (difference %
-            (1000 * 60 * 60 * 24)) /
-          (1000 * 60 * 60)
-        );
-
-      const minutes =
-        Math.floor(
-          (difference %
-            (1000 * 60 * 60)) /
-          (1000 * 60)
-        );
-
-      const seconds =
-        Math.floor(
-          (difference %
-            (1000 * 60)) /
-          1000
-        );
+      /*
+        After 8:47 AM:
+        Show the unlock button,
+        but DON'T show the memories yet.
+      */
 
       countdown.innerHTML =
-        days + "d " +
-        hours + "h " +
-        minutes + "m " +
-        seconds + "s";
+        "✨ Your surprise is ready! ✨";
 
-      memorySection.style.display = "none";
+      lockIcon.innerHTML =
+        "🔓";
 
-      unlockMessage.style.display = "none";
+      surpriseText.innerHTML =
+        "The wait is over. Click below to unlock your memories. ❤️";
+
+      unlockButton.style.display =
+        "inline-block";
+
+      if (!surpriseUnlocked) {
+        memorySection.style.display = "none";
+        unlockMessage.style.display = "none";
+      }
 
     }
 
+    /*
+      Unlock button
+    */
+
+    document
+      .getElementById("unlockButton")
+      .addEventListener("click", function () {
+
+        surpriseUnlocked = true;
+
+        this.style.display =
+          "none";
+
+        unlockMessage.style.display =
+          "block";
+
+        memorySection.style.display =
+          "block";
+
+        memorySection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      });
+
+    /*
+      Check immediately
+    */
+
     updateCountdown();
+
+    /*
+      Update countdown every second
+    */
 
     setInterval(
       updateCountdown,
       1000
     );
+
+    /*
+      Video error handling
+    */
+
+    document
+      .querySelectorAll(".memory-card video")
+      .forEach(function(video) {
+
+        video.addEventListener(
+          "error",
+          function() {
+
+            const errorMessage =
+              this.parentElement.querySelector(".video-error");
+
+            if (errorMessage) {
+              errorMessage.style.display =
+                "block";
+            }
+
+          }
+        );
+
+      });
 
   </script>
 
